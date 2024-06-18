@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  
+ 
+}
+
+
+
+header {
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid rgba(red, green, blue);
+    
+}
+
+header, main{
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+nav {
+    background-color: aqua;
+    margin: 0 auto;
+    max-width: 800px;
+}
