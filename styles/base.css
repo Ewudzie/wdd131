@@ -37,4 +37,6 @@ nav {
     background-color: aqua;
     margin: 0 auto;
     max-width: 800px;
+
+    display: flex;
 }
