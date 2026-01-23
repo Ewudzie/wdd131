@@ -21,7 +21,7 @@ header {
 	
 }
 
-header h1{
+header h1, h2{
      margin: 0;
      padding: 1rem;
      text-align: left;
@@ -83,7 +83,7 @@ nav a {
 
 
 nav a:hover {
-	text-decoration: underline singl;
+	text-decoration: underline single;
 	background-color: #eee;
 	color: #000;
 }
