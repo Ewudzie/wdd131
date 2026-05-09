@@ -21,6 +21,16 @@ header {
 	text-align: center;
 }
 
+#course-title {
+    display: block;
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    text-align: center;
+    font-family: var(--title-font);
+
+}
+
 h1 {
 	background-color: white;
 	padding: 1rem;
@@ -33,6 +43,7 @@ nav {
 	background-color: #2A4B7C;
 	margin: 0 auto;
 	max-width: 800px;
+    padding: 0.5rem;
 }
 nav ul {
 	list-style-type: none;
