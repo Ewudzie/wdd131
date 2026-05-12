@@ -1,51 +1,89 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background-color: #f8f2f2;
+	font-family: "Sansita", sans-serif;
+	display: grid;
+    grid-template-rows: auto 2fr auto;
+
+}
+
 /* HEADER */
 header {
     background-color: #2A4B7C;
     color: #fff;
     text-align: center;
+    padding: 20px 0 0 0;
 
-    /* Stack title above navigation */
+    /* Place title above navigation */
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    padding: 20px 0 0 0;
 }
-
 /* COURSE TITLE */
 #course-title {
     display: block;
     color: white;
+    font-family: "Work Sans", sans-serif;
+    font-size: 2.5rem;
     font-weight: 700;
-    font-size: 2.5rem;        /* Adjust size as needed */
-    font-family: "Sansita", sans-serif;
     text-align: center;
     padding: 1rem;
-    margin-bottom: 1rem;      /* Space between title and nav */
+    margin-bottom: 0.5rem;
 }
 
-/* NAVIGATION CONTAINER */
+/* HEADER NAVIGATION */
 header nav {
     width: 100%;
-    background-color: #2A4B7C;
+    max-width: 800px;
     padding-bottom: 1.25rem;
+    background-color: #2A4B7C;
 }
 
+h1 {
+	background-color: white;
+	padding: 1rem;
+	border: 1px solid rgb(0 0 0 / 10%);
+	font-size: 2rem;
+	text-align: center;
+}
+
+/*nav {
+	background-color: #2A4B7C;
+	margin: 0 auto;
+	max-width: 800px;
+    padding: 0.5rem;
+}*/
 /* NAVIGATION LIST */
 .navigation {
     list-style: none;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
-    max-width: 800px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+/*nav ul {
+	list-style-type: none;
+}*/
 
 /* NAVIGATION ITEMS */
 .navigation li {
     flex: 1;
 }
+
+/*nav a {
+	display: block;
+	color: #fff;
+	text-align: center;
+	padding: 1rem;
+	text-decoration: none;
+}*/
 
 /* NAVIGATION LINKS */
 .navigation a {
@@ -58,12 +96,110 @@ header nav {
     font-weight: 500;
 }
 
+/*nav a:hover {
+	text-decoration: underline;
+	
+}*/
+
 /* HOVER EFFECT */
 .navigation a:hover {
     text-decoration: underline;
 }
 
-/* ACTIVE LINK */
 .active {
-    color: yellow;
+	color: yellow;
 }
+
+/* larger/wider views **************************/
+@media (min-width: 640px) {
+	nav ul {
+		display: flex;
+	}
+
+	nav ul li {
+		flex: 1 0 auto; /* flex: [flex-grow] [flex-shrink] [flex-basis]; 
+		in this example, the items will not shrink but can grow to fill the space at natural content width*/
+
+}
+
+main {
+    background-color: #ffffff;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+main h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+}
+main .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+main .card {
+    padding: 15px;
+    gap: 10px;
+    box-shadow: 0 0 5px #808080;
+    border-radius: 10px;
+    background-color: #d8f4ff;
+}
+
+section {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.about-me {
+    display: grid
+;
+    grid-template-columns: 2fr auto;
+    padding: 10px;
+    gap: 1.5rem;
+    align-items: center;
+    box-shadow: 0 0 2px gray;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.accra {
+    display: grid;
+    grid-template-columns: 2fr auto;
+    padding: 10px;
+    gap: 1.5rem;
+    align-items: center;
+    box-shadow: 0 0 2px gray;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+footer {
+    background-color: #2A4B7C;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+
+
+
+
