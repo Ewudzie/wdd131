@@ -116,7 +116,7 @@ h1 {
 		display: flex;
 	}
 
-	navigation: ; ul li {
+	navigation  ul li {
 		flex: 1 0 auto; /* flex: [flex-grow] [flex-shrink] [flex-basis]; 
 		in this example, the items will not shrink but can grow to fill the space at natural content width*/
 
@@ -182,13 +182,60 @@ div {
     unicode-bidi: isolate;
 }
 
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
+/* Web Resources Card */
+.card {
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    background-color: #ffffff;
+    overflow: hidden;
+
+    /* Makes the card a flex container */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card Header */
+.card h2 {
+    margin: 0;
+    padding: 1rem;
+    background-color: #0f4c81;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Web Resources Content Area */
+.web-resources {
+    flex: 1; /* Fills the remaining height of the card */
+
+    display: flex;
+    align-items: center;      /* Vertically centers the list */
+    justify-content: center;  /* Horizontally centers the list */
+
+    padding: 2rem;
+}
+
+/* Resource List */
+.web-resources ul {
+    margin: 0;
+    padding-left: 1.5rem; /* Keeps bullet points visible */
+    line-height: 2;
+}
+
+/* List Items */
+.web-resources li {
+    margin-bottom: 0.25rem;
+}
+
+/* Links */
+.web-resources a {
+    color: #1a0dab;
+    text-decoration: underline;
+}
+
+.web-resources a:hover {
+    text-decoration: none;
 }
 
 footer {
