@@ -6,7 +6,6 @@
 
 body {
 	margin: 0;
-    padding: 0;
 	background-color: #f8f2f2;
 	font-family: "Sansita", sans-serif;
 	display: grid;
@@ -69,7 +68,7 @@ h1 {
     justify-content: space-around;
     align-items: center;
     background-color: rgb(32, 21, 21);
-    max-width: 800px;
+    max-width: 100uv;
 }
 /*nav ul {
 	list-style-type: none;
