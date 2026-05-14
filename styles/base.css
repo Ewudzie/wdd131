@@ -67,7 +67,8 @@ h1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    color: black;
+    background-color: rgb(32, 21, 21);
+    width: 100%;
 }
 /*nav ul {
 	list-style-type: none;
