@@ -53,12 +53,12 @@ h1 {
 	text-align: center;
 }
 
-nav {
+/*nav {
 	background-color: #2A4B7C;
 	margin: 0 auto;
 	max-width: 800px;
     padding: 0.5rem;
-}
+}*/
 /* NAVIGATION LIST */
 .navigation {
     list-style: none;
