@@ -1,9 +1,10 @@
 @media screen and (min-width: 500px) {
     header {
-        background-color: white;
+        background-color: rgb(26, 8, 8);
     }
     h1{
         text-align: center;
+        color: aliceblue;
     }
 
     main {

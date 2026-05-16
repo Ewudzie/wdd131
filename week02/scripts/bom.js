@@ -1,30 +1,25 @@
 const input = document.querySelector('#favchap');
-const button = document.querySelector('button');
-const list = document.querySelector('');
-const li =  document.createElement('li');
-const deletButton = document.createElement('button')
+const addChapterButton = document.querySelector('#add-chapter');
+const list = document.querySelector('#list');
 
-li.textContent = input.value;
-deletButton.textContent = 'X'
-li.append(deletButton);
-list.append(li);
-
-button.addEventListener('click', function() {
-    if (input.value.trim() !== ''){
-    li.textContent = input.value;
-    deletButton.textContent = 'X'
-    li.append(deletButton);
-    list.append(li);
+addChapterButton.addEventListener('click', function() {
+    const chapter = input.value.trim();
+    if (chapter === '') {
+        return;
     }
 
-    deletButton.addEventListener('click', function (){
-        list.removeChild(li);
+    const li = document.createElement('li');
+    li.textContent = chapter;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = '❌';
+    deleteButton.addEventListener('click', function () {
+        li.remove();
     });
+
+    li.appendChild(deleteButton);
+    list.appendChild(li);
 
     input.value = '';
     input.focus();
-
-
-
-
-})
+});
