@@ -1,17 +1,61 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="WDD 131 - Dynamic Web Fundamentals | Edwin Kibina Ewudzie | Home Page about html, css and Js">
+  <meta name="description" content="WDD 131 - Dynamic Web Fundamentals | Edwin Kibina Ewudzie | Home Page about html, css and JavaScript. A profile page for Accra, Ghana with local data and weather information.">
   <meta name="author" content="Edwin Ewudzie">
-  <link rel="stylesheet" href="styles/place-large.css">
+  <title>Accra, Ghana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/place-small.css">
-  <script src="scripts/place.js" defer=""></script>
-  <title>Place</title>
+  <link rel="stylesheet" href="styles/place-large.css">
+  <script src="scripts/place.js" defer></script>
 </head>
 <body>
-  <h1>Welcome to Place</h1>
-  <p>This is a simple HTML page.</p>
+  <header>
+    <h1>Accra, Ghana</h1>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Accra, Ghana">
+      <picture>
+        <source srcset="images/place-large.webp" media="(min-width: 900px)">
+        <source srcset="images/place-medium.webp" media="(min-width: 520px)">
+        <img src="images/place-small.webp" alt="A coastal cliff and building in Accra, Ghana" width="500" height="750">
+      </picture>
+
+      <section class="info-card data-card">
+        <h2>Data</h2>
+        <dl>
+          <div><dt>Area:</dt><dd>92,099 sq mi</dd></div>
+          <div><dt>Population:</dt><dd>34 Million</dd></div>
+          <div><dt>Capital:</dt><dd>Accra</dd></div>
+          <div><dt>Language:</dt><dd>English; Twi; Ga</dd></div>
+          <div><dt>Currency:</dt><dd>Ghanaian Cedi (GH&#8373;)</dd></div>
+          <div><dt>Time Zone:</dt><dd>GMT</dd></div>
+          <div><dt>Calling Code:</dt><dd>+233</dd></div>
+          <div><dt>Internet TLD:</dt><dd>.gh</dd></div>
+        </dl>
+      </section>
+
+      <section class="info-card weather-card">
+        <h2>Weather</h2>
+        <img class="weather-icon" src="images/weather.svg" alt="Partly cloudy weather icon" width="72" height="72">
+        <dl>
+          <div><dt>Temperature:</dt><dd><span id="temperature">79</span>&deg;F</dd></div>
+          <div><dt>Conditions:</dt><dd>Cloudy</dd></div>
+          <div><dt>Wind:</dt><dd><span id="wind-speed">6</span> mph</dd></div>
+          <div><dt>Wind Chill:</dt><dd><span id="wind-chill">N/A</span></dd></div>
+        </dl>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy;<span id="currentyear"></span> | Edwin Ewudzie | Accra, Ghana</p>
+    <p>Last Modified <span id="lastModified"></span></p>
+  </footer>
 </body>
 </html>

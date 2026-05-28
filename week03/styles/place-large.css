@@ -13,12 +13,14 @@
 
   .hero {
     min-height: 675px;
+    background-image: url("../../images/place-large.webp");
     overflow: hidden;
   }
 
   .hero picture > img {
     height: 675px;
     object-fit: cover;
+    object-position: center bottom;
   }
 
   .info-card {

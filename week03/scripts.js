@@ -1,15 +1,14 @@
-const temperature = Number(document.querySelector("#temperature").textContent);
-const windSpeed = Number(document.querySelector("#wind-speed").textContent);
+let scores = [100, 72, 83, 94, 88, 87];
+scores.splice(2,1);
+console.log(scores);
 
-document.querySelector("#currentyear").textContent = new Date().getFullYear();
-document.querySelector("#lastModified").textContent = document.lastModified;
 
-function calculateWindChill(temp, speed) {
-  return 35.74 + (0.6215 * temp) - (35.75 * speed ** 0.16) + (0.4275 * temp * speed ** 0.16);
+let firstname = "Edwin";
+let lastname = "Ewudzie";
+let fullname = firstname + " " + lastname;
+console.log(fullname);
+
+function fullname(firstname, lastname) {
+    return firstname + " " + lastname;
 }
-
-const windChill = temperature <= 50 && windSpeed > 3
-  ? `${calculateWindChill(temperature, windSpeed).toFixed(1)}&deg;F`
-  : "N/A";
-
-document.querySelector("#wind-chill").innerHTML = windChill;
+console.log(fullname("Edwin", "Ewudzie"));

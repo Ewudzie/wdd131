@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #008b86;
+  --primary-color: #002f6c;
   --panel-color: rgba(255, 255, 255, 0.78);
   --text-color: #111;
 }
@@ -39,7 +39,12 @@ main {
 
 .hero {
   position: relative;
+  min-height: 70vh;
+  background-image: url("../../images/place-small.webp");
+  background-position: center bottom;
+  background-size: cover;
   background-color: #fff;
+  overflow: hidden;
 }
 
 .hero picture,
@@ -47,12 +52,23 @@ main {
   display: block;
 }
 
+.hero picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .hero picture > img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .info-card {
+  position: relative;
+  z-index: 1;
   padding: 1rem;
   text-align: center;
   background-color: #fff;
@@ -99,4 +115,10 @@ footer {
 
 footer p {
   margin: 0.25rem 0;
+}
+
+@media screen and (min-width: 520px) {
+  .hero {
+    background-image: url("../../images/place-medium.webp");
+  }
 }
