@@ -1,0 +1,102 @@
+:root {
+  --primary-color: #008b86;
+  --panel-color: rgba(255, 255, 255, 0.78);
+  --text-color: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif;
+  color: var(--text-color);
+  background-color: #f4f7f7;
+}
+
+header,
+footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+}
+
+header {
+  padding: 1.5rem 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+  background-color: #fff;
+}
+
+.hero picture,
+.hero img {
+  display: block;
+}
+
+.hero picture > img {
+  width: 100%;
+  height: auto;
+}
+
+.info-card {
+  padding: 1rem;
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid #d5dddd;
+}
+
+.info-card h2 {
+  margin: 0 0 1rem;
+  color: var(--primary-color);
+  font-size: 1.75rem;
+}
+
+dl {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+dl div {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin: 0;
+}
+
+.weather-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 0.75rem;
+}
+
+footer {
+  padding: 0.75rem;
+  font-size: 1.2rem;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
