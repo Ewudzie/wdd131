@@ -40,7 +40,7 @@ main {
 .hero {
   position: relative;
   min-height: 70vh;
-  background-image: url("../images/place-small.webp");
+  background-image: url("../images/pexels-steezvisualz-37521445.webp");
   background-position: center bottom;
   background-size: cover;
   background-color: #fff;
@@ -119,6 +119,6 @@ footer p {
 
 @media screen and (min-width: 520px) {
   .hero {
-    background-image: url("../images/place-medium.webp");
+    background-image: url("../images/pexels-steezvisualz-37521445.webp");
   }
 }
