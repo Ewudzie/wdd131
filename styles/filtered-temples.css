@@ -29,7 +29,7 @@ nav {
     width: 100%;
 }
 
-.navigation {
+nav > ul {
     list-style: none;
     display: flex;
     flex-direction: column;

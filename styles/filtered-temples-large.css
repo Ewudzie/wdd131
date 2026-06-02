@@ -13,7 +13,7 @@
         width: auto;
     }
 
-    .navigation {
+    nav > ul {
         flex-direction: row;
     }
 
