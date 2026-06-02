@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WDD 131 - Dynamic Web Fundamentals | Edwin Kibina Ewudzie | A demonstration of lazy loading images in HTML.">
+    <meta name="author" content="Edwin Ewudzie">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/lazyload.css">  
+     <link rel="icon" href="data:,">
+     <script src="scripts/lazyload.js" defer></script>
+    <title>Lazy Loading Images</title>
+</head>
+<body>
+    <main>
+        <h1>Lazy Loading Images</h1>
+        <p>Scroll down to see the images load as they come into view.</p>
+        <div class="image-container">
+            <img src="images/lazy1.jpg" alt="Lazy Image 1" loading="lazy">
+            <img src="images/lazy2.jpg" alt="Lazy Image 2" loading="lazy">
+            <img src="images/lazy3.jpg" alt="Lazy Image 3" loading="lazy">
+            <img src="images/lazy4.jpg" alt="Lazy Image 4" loading="lazy">
+            <img src="images/lazy5.jpg" alt="Lazy Image 5" loading="lazy">
+            <img src="images/lazy6.jpg" alt="Lazy Image 6" loading="lazy">
+            
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy;<span id="currentyear"></span> | Edwin Ewudzie | Lazy Loading Demo</p>
+        <p>Last Modified <span id="lastModified"></span></p>
+    </footer>
+    
+</body>
+</html>

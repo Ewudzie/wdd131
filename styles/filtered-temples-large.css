@@ -1,0 +1,28 @@
+@media (min-width: 640px) {
+    #temple-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    header {
+        flex-wrap: nowrap;
+    }
+
+    nav {
+        width: auto;
+    }
+
+    .navigation {
+        flex-direction: row;
+    }
+
+    .navigation a {
+        border-top: none;
+        padding: 1rem 1.25rem;
+    }
+
+    #temple-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
