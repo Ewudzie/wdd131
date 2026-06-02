@@ -11,7 +11,7 @@ const temples = [
         location: "Manti, Utah, United States",
         dedicated: "1888, May, 21",
         area: 74792,
-        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/manti-utah-temple/manti-utah-temple-38840-main.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/manti-utah-temple/manti-utah-temple-40551-main.jpg"
     },
     {
         templeName: "Payson Utah",
@@ -25,49 +25,49 @@ const temples = [
         location: "Yigo, Guam",
         dedicated: "2020, May, 2",
         area: 6861,
-        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/yigo-guam-temple/yigo-guam-temple-26453-main.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/yigo-guam-temple/yigo-guam-temple-26495-main.jpg"
     },
     {
         templeName: "Washington D.C.",
         location: "Kensington, Maryland, United States",
         dedicated: "1974, November, 19",
         area: 156558,
-        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/washington-d.c.-temple/washington-d.c.-temple-4388-main.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/washington-d.c.-temple/washington-d.c.-temple-14992-main.jpg"
     },
     {
         templeName: "Lima Peru",
         location: "Lima, Peru",
         dedicated: "1986, January, 10",
         area: 9600,
-        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/lima-peru-temple/lima-peru-temple-5532-main.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/lima-peru-temple/lima-peru-temple-12721-main.jpg"
     },
     {
         templeName: "Mexico City Mexico",
         location: "Mexico City, Mexico",
         dedicated: "1983, December, 2",
         area: 116642,
-        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/mexico-city-mexico-temple/mexico-city-mexico-temple-5878-main.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/mexico-city-mexico-temple/mexico-city-mexico-temple-4060-main.jpg"
     },
     {
         templeName: "Sao Paulo Brazil",
         location: "Sao Paulo, Brazil",
         dedicated: "1978, September, 18",
         area: 14300,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/sao-paulo-brazil/400x250/sao-paulo-brazil-temple-lds-273998-wallpaper.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/_temp/017-S%C3%A3o-Paulo-Brazil-Temple.jpg"
     },
     {
         templeName: "Tokyo Japan",
         location: "Tokyo, Japan",
         dedicated: "1980, October, 27",
         area: 10700,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/tokyo-japan/400x250/tokyo-japan-temple-lds-273997-wallpaper.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/tokyo-japan-temple/tokyo-japan-temple-26340-main.jpg"
     },
     {
         templeName: "Bern Switzerland",
         location: "Bern, Switzerland",
         dedicated: "1955, September, 11",
         area: 17000,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/bern-switzerland/400x250/bern-switzerland-temple-lds-273996-wallpaper.jpg"
+        imageUrl: "https://churchofjesuschristtemples.org/assets/img/temples/bern-switzerland-temple/bern-switzerland-temple-54641-main.jpg"
     }
 ];
 
@@ -129,9 +129,9 @@ function filterTemples(filter) {
 navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
         event.preventDefault();
-        const filter = event.target.dataset.filter;
+        const filter = link.dataset.filter;
 
-        heading.textContent = event.target.textContent;
+        heading.textContent = link.textContent;
         displayTemples(filterTemples(filter));
     });
 });
