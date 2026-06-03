@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site plan for a responsive weather forecast information website.">
+    <meta name="author" content="Edwin Ewudzie">
+    <title>Weather Forecast Information Website Site Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Work+Sans:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1f5d8c;
+            --secondary-color: #f5a623;
+            --accent-color: #2f9e44;
+            --background-color: #f4f8fb;
+            --text-color: #1f2933;
+            --card-color: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Roboto", Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1,
+        h2,
+        h3 {
+            font-family: "Work Sans", Arial, sans-serif;
+        }
+
+        header p {
+            max-width: 760px;
+            margin: 0.75rem auto 0;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        section {
+            background-color: var(--card-color);
+            margin: 1rem 0;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 6px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        h3 {
+            margin-top: 1rem;
+            color: var(--text-color);
+        }
+
+        ul {
+            margin-left: 1.25rem;
+        }
+
+        .color-schema {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .color-card {
+            border: 1px solid #d7dde3;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .swatch {
+            min-height: 70px;
+        }
+
+        .color-card p {
+            padding: 0.75rem;
+        }
+
+        .primary {
+            background-color: var(--primary-color);
+        }
+
+        .secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .accent {
+            background-color: var(--accent-color);
+        }
+
+        .background {
+            background-color: var(--background-color);
+        }
+
+        .wireframes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .wireframe {
+            border: 2px solid #cbd5df;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #fdfdfd;
+        }
+
+        .wireframe div {
+            border: 1px solid #aab7c4;
+            background-color: #eaf2f8;
+            padding: 0.6rem;
+            margin: 0.5rem 0;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .desktop-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: #ffffff;
+            background-color: var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 760px) {
+            .wireframes {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Weather Forecast Information Website</h1>
+        <p>A responsive weather information website that helps users view current conditions, historical weather data, and future forecasts for a selected location.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Project Overview</h2>
+            <p>The Weather Forecast Information Website will provide users with weather information for a selected location. The site will display historical weather data, current weather conditions, and future weather forecasts to help users plan daily activities and prepare for hazardous weather conditions.</p>
+            <p>Weather patterns have become increasingly unpredictable due to climate change and global warming. Reliable weather information helps users make informed decisions and reduce risks during severe weather events.</p>
+        </section>
+
+        <section>
+            <h2>Site Name</h2>
+            <p><strong>WeatherWise Forecast</strong></p>
+            <p>This name suggests smart, practical weather planning. It communicates that the site is not only for checking the weather, but also for making wise decisions based on weather information.</p>
+        </section>
+
+        <section>
+            <h2>Site Purpose</h2>
+            <p>The purpose of the site is to help users quickly understand weather conditions for a chosen location. The website will show current temperature, weather description, humidity, wind speed, historical data, and future forecast details in a clean and responsive layout.</p>
+        </section>
+
+        <section>
+            <h2>Target Audience</h2>
+            <p>The target users include students, workers, travelers, outdoor event planners, farmers, and anyone who needs reliable weather information before making daily plans.</p>
+        </section>
+
+        <section>
+            <h2>Scenarios</h2>
+            <ul>
+                <li>What will the weather be like in my city today before I leave for school or work?</li>
+                <li>Is there a chance of severe weather this week that could affect my travel or outdoor plans?</li>
+                <li>How has the weather changed recently compared with previous conditions?</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Planned Features</h2>
+            <ul>
+                <li>Search or select a location to view weather information.</li>
+                <li>Display current weather conditions including temperature, humidity, wind speed, and description.</li>
+                <li>Show future forecast information for planning ahead.</li>
+                <li>Display historical weather data for comparison.</li>
+                <li>Use responsive design for mobile, tablet, and desktop screens.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Color Schema</h2>
+            <div class="color-schema">
+                <div class="color-card">
+                    <div class="swatch primary"></div>
+                    <p><strong>Primary Blue:</strong> headers, navigation, buttons, and section accents.</p>
+                </div>
+                <div class="color-card">
+                    <div class="swatch secondary"></div>
+                    <p><strong>Sun Gold:</strong> highlights, alerts, weather icons, and callout details.</p>
+                </div>
+                <div class="color-card">
+                    <div class="swatch accent"></div>
+                    <p><strong>Weather Green:</strong> safe conditions, positive indicators, and supporting accents.</p>
+                </div>
+                <div class="color-card">
+                    <div class="swatch background"></div>
+                    <p><strong>Cloud Background:</strong> page background and quiet content areas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Typography</h2>
+            <p><strong>Work Sans:</strong> used for headings and important labels because it is clear and strong.</p>
+            <p><strong>Roboto:</strong> used for body text because it is readable on both mobile and desktop screens.</p>
+        </section>
+
+        <section>
+            <h2>Wireframes</h2>
+            <div class="wireframes">
+                <div class="wireframe">
+                    <h3>Mobile View</h3>
+                    <div>Header and Navigation</div>
+                    <div>Location Search</div>
+                    <div>Current Weather Card</div>
+                    <div>Forecast Cards</div>
+                    <div>Historical Weather Section</div>
+                    <div>Footer</div>
+                </div>
+
+                <div class="wireframe">
+                    <h3>Desktop View</h3>
+                    <div>Header and Horizontal Navigation</div>
+                    <div>Location Search Bar</div>
+                    <div class="desktop-grid">
+                        <div>Current Weather and Forecast</div>
+                        <div>Weather Alerts</div>
+                    </div>
+                    <div>Historical Weather Data</div>
+                    <div>Footer</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Edwin Ewudzie | Weather Forecast Information Website Site Plan</p>
+    </footer>
+</body>
+</html>
