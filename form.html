@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product review form for WDD 131.">
+    <meta name="author" content="Edwin Ewudzie">
+    <title>Product Review</title>
+    <link rel="stylesheet" href="styles/form.css">
+    <script src="scripts/form.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Product Review</h1>
+    </header>
+
+    <main>
+        <form method="get" action="review.html" class="review-form">
+            <label for="product-name">
+                Product Name
+                <select id="product-name" name="product" required>
+                    <option value="" disabled selected>Choose a Product ...</option>
+                </select>
+            </label>
+
+            <fieldset class="rating-group">
+                <legend>Overall Rating</legend>
+                <div class="ratings">
+                    <label for="rating-1">
+                        <span>*</span>
+                        <input type="radio" id="rating-1" name="rating" value="1" required>
+                    </label>
+                    <label for="rating-2">
+                        <span>**</span>
+                        <input type="radio" id="rating-2" name="rating" value="2">
+                    </label>
+                    <label for="rating-3">
+                        <span>***</span>
+                        <input type="radio" id="rating-3" name="rating" value="3">
+                    </label>
+                    <label for="rating-4">
+                        <span>****</span>
+                        <input type="radio" id="rating-4" name="rating" value="4">
+                    </label>
+                    <label for="rating-5">
+                        <span>*****</span>
+                        <input type="radio" id="rating-5" name="rating" value="5">
+                    </label>
+                </div>
+            </fieldset>
+
+            <label for="install-date">
+                Date of Installation
+                <input type="date" id="install-date" name="installDate" required>
+            </label>
+
+            <fieldset class="features-group">
+                <legend>
+                    Which features did you find useful in the product?
+                    <span>(Check all that apply)</span>
+                </legend>
+                <label for="durability">
+                    <input type="checkbox" id="durability" name="features" value="durability">
+                    Durability
+                </label>
+                <label for="ease-of-use">
+                    <input type="checkbox" id="ease-of-use" name="features" value="ease-of-use">
+                    Ease of Use
+                </label>
+                <label for="performance">
+                    <input type="checkbox" id="performance" name="features" value="performance">
+                    Performance
+                </label>
+                <label for="design">
+                    <input type="checkbox" id="design" name="features" value="design">
+                    Design
+                </label>
+            </fieldset>
+
+            <label for="written-review">
+                Written Review
+                <span>(Optional)</span>
+                <textarea id="written-review" name="review"></textarea>
+            </label>
+
+            <label for="reviewer-name">
+                Your Name
+                <span>(Optional)</span>
+                <input type="text" id="reviewer-name" name="userName">
+            </label>
+
+            <button type="submit">Post Review</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy;<span id="currentyear"></span> Edwin Ewudzie</p>
+        <p>Accra, Ghana</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+    </footer>
+</body>
+</html>
