@@ -3,6 +3,9 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     color: #050505;
     font-family: Arial, Helvetica, sans-serif;
@@ -29,7 +32,9 @@ h1 {
 }
 
 main {
+    flex: 1;
     max-width: 640px;
+    width: 100%;
     margin: 1rem auto;
 }
 
@@ -40,6 +45,37 @@ main {
     background-color: #123a5f;
     border: 1px solid #0d2d4a;
     border-radius: 3px;
+}
+
+.review-confirmation {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: #123a5f;
+    border: 1px solid #0d2d4a;
+    border-radius: 3px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.review-confirmation h2,
+.review-confirmation p {
+    margin: 0;
+}
+
+.review-confirmation a {
+    justify-self: center;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.review-confirmation a:hover,
+.review-confirmation a:focus {
+    background-color: #ffffff;
+    color: #123a5f;
 }
 
 label,
