@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current - WeatherWise Forecast</title>
+    <link rel="stylesheet" href="styles/weather.css">
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/weather.js" defer></script>
+</head>
+<body data-page="current">
+    <header class="site-header">
+        <div data-site-nav></div>
+    </header>
+
+    <form class="search-panel" id="weatherSearch">
+        <label for="locationInput">Enter a location</label>
+        <div class="search-row">
+            <input type="search" id="locationInput" name="location" placeholder="Accra, Ghana" autocomplete="address-level2" required>
+            <button type="submit" id="searchButton">View Weather</button>
+        </div>
+        <p class="search-status" id="searchStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <main>
+        <section class="dashboard" id="current">
+            <article class="current-card">
+                <div class="section-heading">
+                    <p class="eyebrow">Current conditions</p>
+                    <h2 id="currentLocation">Accra, Ghana</h2>
+                </div>
+                <div class="weather-main">
+                    <div class="weather-symbol icon-cloud-sun large" id="weatherIcon" aria-hidden="true"></div>
+                    <div>
+                        <p class="temperature" id="currentTemp">29&deg;C</p>
+                        <p id="currentDescription">Partly cloudy</p>
+                    </div>
+                </div>
+                <dl class="weather-stats">
+                    <div>
+                        <dt>Humidity</dt>
+                        <dd id="humidity">78%</dd>
+                    </div>
+                    <div>
+                        <dt>Wind</dt>
+                        <dd id="wind">18 km/h</dd>
+                    </div>
+                    <div>
+                        <dt>Feels Like</dt>
+                        <dd id="feelsLike">32&deg;C</dd>
+                    </div>
+                </dl>
+            </article>
+
+            <aside class="alert-card">
+                <p class="eyebrow">Weather alert</p>
+                <h2 id="alertTitle">Moderate coastal breeze</h2>
+                <p id="alertMessage">Outdoor plans are fine, but keep an eye on afternoon cloud cover and changing wind near the coast.</p>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy;<span id="currentyear"></span> Edwin Ewudzie | WeatherWise Forecast</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+    </footer>
+</body>
+</html>

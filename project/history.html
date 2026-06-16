@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - WeatherWise Forecast</title>
+    <link rel="stylesheet" href="styles/weather.css">
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/weather.js" defer></script>
+</head>
+<body data-page="history">
+    <header class="site-header">
+        <div data-site-nav></div>
+    </header>
+
+    <form class="search-panel" id="weatherSearch">
+        <label for="locationInput">Enter a location</label>
+        <div class="search-row">
+            <input type="search" id="locationInput" name="location" placeholder="Accra, Ghana" autocomplete="address-level2" required>
+            <button type="submit" id="searchButton">View Weather</button>
+        </div>
+        <p class="search-status" id="searchStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <main>
+        <section id="history" class="content-section">
+            <div class="section-heading">
+                <p class="eyebrow">Recent comparison</p>
+                <h2>Historical Weather</h2>
+            </div>
+            <div class="history-list" id="historyList">
+                <!-- History items will be populated by scripts/weather.js -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy;<span id="currentyear"></span> Edwin Ewudzie | WeatherWise Forecast</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+    </footer>
+</body>
+</html>

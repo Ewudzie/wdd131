@@ -5,6 +5,20 @@ const searchStatus = document.querySelector("#searchStatus");
 const menuButton = document.querySelector("#menuButton");
 const navLinks = document.querySelector("#navLinks");
 
+function query(selector) {
+    return document.querySelector(selector);
+}
+
+function setText(selector, text) {
+    const element = query(selector);
+    if (element) element.textContent = text;
+}
+
+function setClass(selector, className) {
+    const element = query(selector);
+    if (element) element.className = className;
+}
+
 const weatherCodeMap = {
     0: { text: "Clear sky", icon: "sun" },
     1: { text: "Mainly clear", icon: "sun" },
@@ -46,12 +60,16 @@ function todayText() {
 }
 
 function setStatus(message) {
-    searchStatus.textContent = message;
+    if (searchStatus) {
+        searchStatus.textContent = message;
+    }
 }
 
 function setLoading(isLoading) {
-    searchButton.disabled = isLoading;
-    searchButton.textContent = isLoading ? "Loading..." : "View Weather";
+    if (searchButton) {
+        searchButton.disabled = isLoading;
+        searchButton.textContent = isLoading ? "Loading..." : "View Weather";
+    }
 }
 
 function getStoredLocation() {
@@ -62,8 +80,12 @@ function saveLocation(locationName) {
     localStorage.setItem("weatherwise-location", locationName);
 }
 
-async function getLocation(query) {
-    const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=1&language=en&format=json`;
+function normalizeQuery(query) {
+    return query.replace(/[\s,]+/g, ' ').trim();
+}
+
+async function fetchLocationResults(query, count = 5) {
+    const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=${count}&language=en&format=json`;
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -71,12 +93,36 @@ async function getLocation(query) {
     }
 
     const data = await response.json();
+    return data.results || [];
+}
 
-    if (!data.results || data.results.length === 0) {
-        throw new Error("Location not found. Try adding a country or region.");
+async function getLocation(query) {
+    const attempts = [];
+    const trimmedQuery = query.trim();
+
+    if (trimmedQuery) {
+        attempts.push(trimmedQuery);
     }
 
-    return data.results[0];
+    const normalizedQuery = normalizeQuery(trimmedQuery);
+    if (normalizedQuery && normalizedQuery !== trimmedQuery) {
+        attempts.push(normalizedQuery);
+    }
+
+    const parts = normalizedQuery.split(' ').filter(Boolean);
+    if (parts.length >= 2) {
+        attempts.push(`${parts[0]} ${parts[parts.length - 1]}`);
+        attempts.push(parts.join(' '));
+    }
+
+    for (const attempt of attempts) {
+        const results = await fetchLocationResults(attempt, 5);
+        if (results.length > 0) {
+            return results[0];
+        }
+    }
+
+    throw new Error("Location not found. Try using a city and country, such as 'Accra Ghana'.");
 }
 
 async function getWeather(location) {
@@ -105,18 +151,23 @@ function getDisplayName(location) {
 }
 
 function buildForecast(daily) {
+    if (!daily || !Array.isArray(daily.time) || daily.time.length === 0) {
+        return [];
+    }
+
     const startIndex = daily.time.findIndex((date) => date >= todayText());
     const safeStart = startIndex >= 0 ? startIndex : 0;
 
     return daily.time.slice(safeStart, safeStart + 5).map((date, index) => {
         const sourceIndex = safeStart + index;
-        const details = getWeatherDetails(daily.weather_code[sourceIndex]);
+        const code = (daily.weather_code && daily.weather_code[sourceIndex]) || 0;
+        const details = getWeatherDetails(code);
 
         return {
             day: index === 0 ? "Today" : formatDate(date),
             icon: details.icon,
-            high: daily.temperature_2m_max[sourceIndex],
-            low: daily.temperature_2m_min[sourceIndex],
+            high: (daily.temperature_2m_max && daily.temperature_2m_max[sourceIndex]) ?? null,
+            low: (daily.temperature_2m_min && daily.temperature_2m_min[sourceIndex]) ?? null,
             description: details.text
         };
     });
@@ -142,7 +193,16 @@ function buildHistory(daily) {
 }
 
 function renderForecast(forecast) {
-    document.querySelector("#forecastGrid").innerHTML = forecast
+    const container = document.querySelector("#forecastGrid");
+    if (!container) {
+        return;
+    }
+    if (!Array.isArray(forecast) || forecast.length === 0) {
+        container.innerHTML = '<p class="no-data">No forecast data available.</p>';
+        return;
+    }
+
+    container.innerHTML = forecast
         .map((day) => `
             <article class="forecast-card">
                 <h3>${day.day}</h3>
@@ -155,7 +215,16 @@ function renderForecast(forecast) {
 }
 
 function renderHistory(history) {
-    document.querySelector("#historyList").innerHTML = history
+    const container = document.querySelector("#historyList");
+    if (!container) {
+        return;
+    }
+    if (!Array.isArray(history) || history.length === 0) {
+        container.innerHTML = '<p class="no-data">No historical data available.</p>';
+        return;
+    }
+
+    container.innerHTML = history
         .map((day) => `
             <article class="history-item">
                 <div>
@@ -170,28 +239,40 @@ function renderHistory(history) {
 
 function renderWeather(location, weather) {
     const displayName = getDisplayName(location);
-    const currentDetails = getWeatherDetails(weather.current.weather_code);
-    const forecast = buildForecast(weather.daily);
-    const history = buildHistory(weather.daily);
-    const weeklyHigh = Math.max(...forecast.map((day) => day.high));
-    const rainChance = Math.max(...weather.daily.precipitation_probability_max.slice(-5).map((chance) => chance ?? 0));
+    try {
+        const currentDetails = weather && weather.current ? getWeatherDetails(weather.current.weather_code) : getWeatherDetails(0);
+        const forecast = weather && weather.daily ? buildForecast(weather.daily) : [];
+        const history = weather && weather.daily ? buildHistory(weather.daily) : [];
 
-    document.querySelector("#savedLocation").textContent = location.name;
-    document.querySelector("#weeklyHigh").textContent = formatTemp(weeklyHigh);
-    document.querySelector("#rainChance").textContent = `${rainChance}%`;
-    document.querySelector("#currentLocation").textContent = displayName;
-    document.querySelector("#weatherIcon").className = `weather-symbol icon-${currentDetails.icon} large`;
-    document.querySelector("#currentTemp").textContent = formatTemp(weather.current.temperature_2m);
-    document.querySelector("#currentDescription").textContent = currentDetails.text;
-    document.querySelector("#humidity").textContent = `${Math.round(weather.current.relative_humidity_2m)}%`;
-    document.querySelector("#wind").textContent = `${Math.round(weather.current.wind_speed_10m)} km/h`;
-    document.querySelector("#feelsLike").textContent = formatTemp(weather.current.apparent_temperature);
-    document.querySelector("#alertTitle").textContent = getAlertTitle(currentDetails.text, rainChance, weather.current.wind_speed_10m);
-    document.querySelector("#alertMessage").textContent = getAlertMessage(rainChance, weather.current.wind_speed_10m);
+        const weeklyHigh = forecast.length > 0 ? Math.max(...forecast.map((day) => day.high || -Infinity)) : null;
+        const rainChance = (weather && weather.daily && Array.isArray(weather.daily.precipitation_probability_max))
+            ? Math.max(...weather.daily.precipitation_probability_max.slice(-5).map((chance) => chance ?? 0))
+            : 0;
 
-    renderForecast(forecast);
-    renderHistory(history);
-    saveLocation(displayName);
+        setText("#savedLocation", location.name);
+        setText("#weeklyHigh", weeklyHigh !== null ? formatTemp(weeklyHigh) : "N/A");
+        setText("#rainChance", `${rainChance}%`);
+        setText("#currentLocation", displayName);
+        setClass("#weatherIcon", `weather-symbol icon-${currentDetails.icon} large`);
+        if (weather && weather.current) {
+            setText("#currentTemp", formatTemp(weather.current.temperature_2m));
+            setText("#currentDescription", currentDetails.text);
+            setText("#humidity", `${Math.round(weather.current.relative_humidity_2m)}%`);
+            setText("#wind", `${Math.round(weather.current.wind_speed_10m)} km/h`);
+            setText("#feelsLike", formatTemp(weather.current.apparent_temperature));
+            setText("#alertTitle", getAlertTitle(currentDetails.text, rainChance, weather.current.wind_speed_10m));
+            setText("#alertMessage", getAlertMessage(rainChance, weather.current.wind_speed_10m));
+        }
+
+        renderForecast(forecast);
+        renderHistory(history);
+        saveLocation(displayName);
+    } catch (err) {
+        console.error('Error rendering weather:', err);
+        renderForecast([]);
+        renderHistory([]);
+        setStatus('Unable to display forecast/history for this location.');
+    }
 }
 
 function getAlertTitle(description, rainChance, windSpeed) {
@@ -227,7 +308,9 @@ async function loadWeather(query) {
         setStatus(`Loading weather for ${getDisplayName(location)}...`);
         const weather = await getWeather(location);
         renderWeather(location, weather);
-        locationInput.value = getDisplayName(location);
+        if (locationInput) {
+            locationInput.value = getDisplayName(location);
+        }
         setStatus("Weather updated.");
     } catch (error) {
         setStatus(error.message);
@@ -237,29 +320,38 @@ async function loadWeather(query) {
 }
 
 function setFooterDates() {
-    document.querySelector("#currentyear").textContent = new Date().getFullYear();
-    document.querySelector("#lastModified").textContent = document.lastModified;
+    setText("#currentyear", new Date().getFullYear());
+    setText("#lastModified", document.lastModified);
 }
 
-weatherSearch.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const query = locationInput.value.trim();
+if (weatherSearch && locationInput) {
+    weatherSearch.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = locationInput.value.trim();
 
-    if (query) {
-        loadWeather(query);
-    }
-});
+        if (query) {
+            loadWeather(query);
+        }
+    });
+}
 
-menuButton.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    menuButton.setAttribute("aria-expanded", isOpen);
-});
+if (menuButton && navLinks) {
+    menuButton.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", isOpen);
+    });
 
-navLinks.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-});
+    navLinks.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+    });
+}
 
-locationInput.value = getStoredLocation();
-loadWeather(locationInput.value);
+if (locationInput) {
+    locationInput.value = getStoredLocation();
+    loadWeather(locationInput.value);
+} else {
+    loadWeather(getStoredLocation());
+}
+
 setFooterDates();

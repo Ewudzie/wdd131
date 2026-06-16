@@ -6,26 +6,16 @@
     <meta name="description" content="WeatherWise Forecast shows current weather, future forecasts, alerts, and recent weather history for selected locations.">
     <meta name="author" content="Edwin Ewudzie">
     <title>WeatherWise Forecast</title>
-    <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="styles/weather.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Work+Sans:wght@600;700&display=swap" rel="stylesheet">
-    <script src="weather.js" defer></script>
+    <script src="scripts/header.js" defer></script>
+    <script src="scripts/weather.js" defer></script>
 </head>
-<body>
+<body data-page="home">
     <header class="site-header">
-        <nav class="nav">
-            <a class="logo" href="index.html" aria-label="WeatherWise Forecast home">
-                <span class="logo-mark" aria-hidden="true"></span>
-                <span>WeatherWise</span>
-            </a>
-            <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#current">Current</a></li>
-                <li><a href="#forecast">Forecast</a></li>
-                <li><a href="#history">History</a></li>
-            </ul>
-        </nav>
+        <div data-site-nav></div>
 
         <section class="hero">
             <div>
